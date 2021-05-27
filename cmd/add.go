@@ -17,7 +17,7 @@ package cmd
 
 import (
 	"fmt"
-    "strconv"
+	"strconv"
 
 	"github.com/spf13/cobra"
 )
@@ -28,15 +28,15 @@ var addCmd = &cobra.Command{
 	Short: "Add multiple numbers",
 	Long: `Todo`,
 	Run: func(cmd *cobra.Command, args []string) {
-        var sum int
+		var sum float64
         for _, arg := range args {
-            num, err := strconv.Atoi(arg)
+            num, err := strconv.ParseFloat(arg, 64)
 
             if err != nil {
                 panic(err)
             }
             
-            sum += num
+			sum += num
         }
         
 		fmt.Println(sum)
