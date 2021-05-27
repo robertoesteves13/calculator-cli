@@ -28,11 +28,12 @@ var addCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		var sum float64
 		nums := internal.ParseInput(args)
+		nums = internal.EvenOrOdd(nums, isEven, isOdd, isFloat)
 		
 		for _, num := range nums {
 			sum += num
 		}
-		
+
 		internal.PrintOutput(sum, isFloat)
 	},
 }

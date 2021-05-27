@@ -17,6 +17,7 @@ package internal
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 )
 
@@ -40,4 +41,28 @@ func PrintOutput(num float64, isFloat bool) {
 		} else {
 			fmt.Println(int(num))
 		}
+}
+
+func EvenOrOdd(nums []float64, isEven, isOdd, isFloat bool) ([]float64) {
+	if isFloat {
+		fmt.Printf("Floating precision will be lost when using even or odd flags.")
+	}
+
+	if (isEven && isOdd) {
+		log.Fatal("Can't use even and odd at the same time.")
+	} else if (isEven) {
+		for i, num := range nums {
+			if (int(num) % 2) != 0 {
+				nums[i] = 0;
+			}
+		}
+	} else if (isOdd) {
+		for i, num := range nums {
+			if (int(num) % 2) == 0 {
+				nums[i] = 0;
+			}
+		}
+	}
+
+	return nums
 }

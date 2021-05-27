@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+
 	"github.com/spf13/cobra"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -25,6 +26,8 @@ import (
 )
 
 var cfgFile string
+var isEven bool
+var isOdd bool
 var isFloat bool
 
 // rootCmd represents the base command when called without any subcommands
@@ -53,6 +56,8 @@ func init() {
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.calculator-cli.yaml)")
 	rootCmd.PersistentFlags().BoolVarP(&isFloat, "float", "f", false, "Do floating numbers calculation")
+	rootCmd.PersistentFlags().BoolVarP(&isEven, "even", "e", false, "Only accepts even numbers")
+	rootCmd.PersistentFlags().BoolVarP(&isOdd, "odd", "o", false, "Only accepts odd numbers")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
