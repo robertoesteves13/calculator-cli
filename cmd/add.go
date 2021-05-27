@@ -16,9 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-	"strconv"
-
+	"github.com/robertoesteves13/calculator-cli/internal"
 	"github.com/spf13/cobra"
 )
 
@@ -29,17 +27,13 @@ var addCmd = &cobra.Command{
 	Long: `Todo`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var sum float64
-        for _, arg := range args {
-            num, err := strconv.ParseFloat(arg, 64)
-
-            if err != nil {
-                panic(err)
-            }
-            
+		nums := internal.ParseInput(args)
+		
+		for _, num := range nums {
 			sum += num
-        }
-        
-		fmt.Println(sum)
+		}
+		
+		internal.PrintOutput(sum, isFloat)
 	},
 }
 
